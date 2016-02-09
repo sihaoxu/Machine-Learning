@@ -1,4 +1,4 @@
-function [indices,dists]=findknn(xTr,xTe,k)
+function [indices,dists]=findknn(xTr,xTe,k);
 % function [indices,dists]=findknn(xTr,xTe,k);
 %
 % Finds the k nearest neighbors of xTe in xTr.
