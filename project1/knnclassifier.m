@@ -20,8 +20,24 @@ function preds=knnclassifier(xTr,yTr,xTe,k);
 if k>ntr,k=ntr;end;
 
 %currently assigning random predictions
-un=unique(yTr);
-preds=un(ceil(rand(1,n)*length(un)));
+%un=unique(yTr);
+%preds=un(ceil(rand(1,n)*length(un)));
 
 %% fill in code here
+while(k>0)
+[indices,dists]=findknn(xTr,xTe,k);
+Y=yTr(indices(:,:));
+    if(k==1)
+        preds=Y;
+        break;
+    else
+        [preds,M,C]=mode(Y);
+    end
+    if(sum(cellfun('length',C))==n)
+        break;
+    else
+        k=k-1;
+    end
+end
+
 
