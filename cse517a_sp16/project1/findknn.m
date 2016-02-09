@@ -1,4 +1,4 @@
-function [indices,dists]=findknn(xTr,xTe,k);
+function [indices,dists]=findknn(xTr,xTe,k)
 % function [indices,dists]=findknn(xTr,xTe,k);
 %
 % Finds the k nearest neighbors of xTe in xTr.
@@ -21,7 +21,10 @@ dists=rand(k,nte);
 if k>ntr,k=ntr;end;
 
 %% fill in code here
-	
+	D=l2distance(xTr,xTe);
+    [Y,I]=sort(D);
+    indices=I(1:k,:);
+    dists=Y(1:k,:);
 	
 %%	%
 	

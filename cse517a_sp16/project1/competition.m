@@ -19,4 +19,13 @@ un=unique(yTr);
 preds=randi(length(un),1,n);
 
 %fill in the code here
-
+k=10;
+while(k>0)
+    if(k==1)
+        break;
+    end
+    if(k>n)
+       k=k-1;
+    end
+end
+preds=knnclassifier(xTr,yTr,xTe,k);

@@ -12,9 +12,12 @@ switch kind
 	case 'abs'
 		% compute the absolute difference between truth and predictions
 		%fill in the code here
-		
+        [~,n]=size(truth);
+		output=sum(abs(preds-truth))/n;
 	case 'acc' 
 		%% fill in code here
-		 	
+         [~,n]=size(truth);
+         [~,x]=size(find((preds-truth)==0));
+		 output=x/n;	
 end;
 
