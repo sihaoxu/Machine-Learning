@@ -12,13 +12,15 @@ function w=perceptron(x,y);
 
 [d,n]=size(x);
 w=zeros(d,1);
+max=0;
 while true
     p=randperm(n);
     z=x(:,p);
+    k=y(p);
     m=0;
     for num=1:n
         i=z(:,num);
-        j=y(num);
+        j=k(num);
         if (w'*i)*j<=0
            w = perceptronUpdate(i,j,w);
            m=m+1;
@@ -26,6 +28,10 @@ while true
     end
     if m==0
         break;
+    elseif max==100
+        break;
+    else
+        max=max+1;
     end
 end
 
