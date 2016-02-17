@@ -21,9 +21,7 @@ end;
 i=ones(1,n);
 z=[x;i];
 j=[w' b];
-temp=j*z;
-temp(temp<0)=-1;
-temp(temp>0)=1;
-preds=temp;
+
+preds=sign(j*z);
 
 
