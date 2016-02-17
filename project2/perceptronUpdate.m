@@ -12,5 +12,6 @@ function w = perceptronUpdate(x,y,w)
 %
 
 d = size(x,1);
+w=w+y*x;
 %% fill in code here
 
