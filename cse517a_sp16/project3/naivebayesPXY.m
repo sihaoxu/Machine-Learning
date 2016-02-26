@@ -24,9 +24,9 @@ posy=length(find(y==1));
 negy=length(find(y==-1));
 posx=x(:,y==1);
 negx=x(:,y==-1);
-posprob=sum(posx,2)/posy;
+posprob=sum(posx,2);
 posprob=posprob/sum(posprob);
-negprob=sum(negx,2)/negy;
+negprob=sum(negx,2);
 negprob=negprob/sum(negprob);
 
 
