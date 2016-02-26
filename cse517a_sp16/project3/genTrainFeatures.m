@@ -10,8 +10,8 @@ function [x,y]=genTrainFeatures()
 % y: n labels (+1 = girl, -1 = boy)
 
 % convert girl names into feature vectors
-system('cat girls.train | python name2features.py > girls.csv ')
-system('cat boys.train | python name2features.py > boys.csv ')
+system('type girls.train | python name2features.py > girls.csv ')
+system('type boys.train | python name2features.py > boys.csv ')
 
 %% load in girls
 girls=load('girls.csv');
