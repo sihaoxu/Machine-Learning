@@ -14,26 +14,17 @@ function logratio = naivebayes(x,y,x1)
 
 [d,n] = size(x);
 %% fill in code here
-%[posprob,negprob] = naivebayesPXY(x,y);
-posy=length(find(y==1));
-negy=length(find(y==-1));
-posx=x(:,y==1);
+[posprob,negprob] = naivebayesPXY(x,y);
 
-posx=x(posx==x1,:);
+j=ones(d,1);
 
-negx=x(:,y==-1);
-
-negx=x(negx==x1,:);
-posprob=sum(posx,2)/posy;
-posprob=posprob/sum(posprob);
-negprob=sum(negx,2)/negy;
-negprob=negprob/sum(negprob);
-
+posprob2=prod(posprob.*x1+(1-x1).*(1-posprob));
+negprob2=prod(negprob.*x1+(1-x1).*(1-negprob));
 
 [pos,neg] = naivebayesPY(x,y);
 
 %probx=length(find(x==y1))/length(x);
-py1=posprob*pos;
-py2=negprob*neg;
-logratio=log(py1/py2);
+pyp=posprob2*pos;
+pyn=negprob2*neg;
+logratio=log(pyp/pyn);
 
