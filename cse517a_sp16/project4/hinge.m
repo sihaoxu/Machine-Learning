@@ -15,3 +15,9 @@ function [loss,gradient,preds]=hinge(w,xTr,yTr,lambda)
 
 [d,n]=size(xTr);
 
+loss=sum(max(1-yTr.*(w'*xTr),0))+lambda*w'*w;
+
+y0=yTr;
+y0(max(1-yTr.*(w'*xTr),0)==0)=0;
+gradient=-xTr*y0'+2*lambda*w;
+
