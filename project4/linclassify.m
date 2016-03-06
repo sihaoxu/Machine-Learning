@@ -11,5 +11,6 @@ function [preds]=linclassify(w,xTe)
 % 
 
 [d,n]=size(xTe);
+preds=sign(w'*xTe);
 
 
