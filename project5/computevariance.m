@@ -22,7 +22,10 @@ global Nsmall NMODELS OFFSET;
 variance=zeros(1,n);
 
 for j=1:NMODELS
-
+     [xTr,yTr]=toydata(OFFSET,Nsmall);
+    fun=kregression(xTr,yTr,sigma,lambda);
+    prediction=fun(xTe);
+    variance = variance + (prediction-hbar).^2;
 end;
 variance=mean(variance)/NMODELS;
 
