@@ -34,6 +34,7 @@ px=pxy1.*py1 + pxy2.*py2;
 py1x=pxy1.*py1./px;
 py2x=pxy2.*py2./px;
 
+
 ybar = py1x+py2x*2;
 
 
