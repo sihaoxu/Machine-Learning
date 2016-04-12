@@ -19,18 +19,37 @@ function [bestC,bestP,bestval,allvalerrs]=crossvalidate(xTr,yTr,ktype,Cs,paras)
 %
 
 %%% Feel free to delete this
-bestC=0;
-bestP=0;
-bestval=10^10;
+%bestC=0;
+%bestP=0;
+%bestval=10^10;
 
 %% Split off validation data set
 % YOUR CODE
 
+Cs_length = length(Cs);
+paras_length = length(paras);
+allvalerrs = zeros(Cs_length,paras_length);
+n = length(xTr);
+split_val = n / 5;
+train_data = xTr(:,[1:split_val]);
+train_labels = yTr(:,[1:split_val]);
+validation_data = xTr(:,[split_val+1:n]);
+validation_labels = yTr(:,[split_val+1:n]);
 
 %% Evaluate all parameter settings
 % YOUR CODE
-
+for i=1:Cs_length
+	for j=1:paras_length
+		svmclassify=trainsvm(train_data,train_labels,Cs(i), ktype, paras(j));
+		err=sum(sign(svmclassify(validation_data)')~=validation_labels)/length(validation_labels);
+		allvalerrs(i,j)=err;
+	end
+end
 %% Identify best setting
 % YOUR CODE
+bestval = min(allvalerrs(:));
+[bestC,bestP] = find(allvalerrs==bestval);
+bestC=min(bestC);
+bestP=min(bestP);
 
 

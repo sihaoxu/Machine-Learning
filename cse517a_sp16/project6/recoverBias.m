@@ -15,4 +15,16 @@ function bias=recoverBias(K,yTr,alphas,C);
 %
 
 
-% YOUR CODE 
+% YOUR CODE
+[d,n]=size(yTr);
+if(d==1)
+    yTr=yTr';
+end
+
+as= alphas<C & alphas>0;
+sorted=sort(alphas(as));
+med=sorted(round(length(sorted)/2));
+i=find(alphas==med);
+y=yTr(i);
+bias=y-sum(yTr.*K(:,i).*alphas);
+
