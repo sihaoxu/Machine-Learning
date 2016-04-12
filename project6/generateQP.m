@@ -16,7 +16,23 @@ function [H,q,Aeq,beq,lb,ub]=generateQP(K,yTr,C);
 [d,n]=size(K);
 assert(d==n);
 
+
 % YOUR CODE
+beq=0;
+Aeq=yTr;
+lb=zeros(n,1);
+t=ones(n,1);
+ub=t.*C;
+q=ones(n,1);
+q=q.*(-1);
+t1=repmat(yTr,n,1);
+t2=repmat(yTr',1,n);
+H=K.*t1;
+H=H.*t2;
+
+
+
+
 
 
 

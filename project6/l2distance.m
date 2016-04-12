@@ -17,6 +17,40 @@ function D=l2distance(X,Z)
 %
 
 [d,n]=size(X);
+if (nargin==1) % case when there is only one input (X)
+	%% fill in code here
+    [d,n]=size(X);  
+    S= X'*X;
+    I= eye(n);
+    S= S.*I;
+    S= S*ones(n,1);
+    S= repmat(S,1,n);
+    R= X'*X;
+    H= eye(n);
+    R= R.*H;
+    R= ones(1,n)*R;
+    R= repmat(R,n,1);
+    G= X'*X;
+    Dsq= S-2*G+R;
+    D=sqrt(Dsq);
+else  % case when there are two inputs (X,Z)
+	%% fill in code here
+    [d,n]=size(X); 
+    [~,m]=size(Z); 
+    S= X'*X;
+    I= eye(n);
+    S= S.*I;
+    S= S*ones(n,1);
+    S= repmat(S,1,m);
+    R= Z'*Z;
+    H= eye(m);
+    R= R.*H;
+    R= ones(1,m)*R;
+    R= repmat(R,n,1);
+    G= X'*Z;
+    Dsq= S-2*G+R;
+    D=sqrt(Dsq);
+end;
 % YOUR CODE (you can copy it from previous projects)
 
 
