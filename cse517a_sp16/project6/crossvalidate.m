@@ -30,11 +30,11 @@ Cs_length = length(Cs);
 paras_length = length(paras);
 allvalerrs = zeros(Cs_length,paras_length);
 n = length(xTr);
-split_val = n / 5;
-train_data = xTr(:,[1:split_val]);
-train_labels = yTr(:,[1:split_val]);
-validation_data = xTr(:,[split_val+1:n]);
-validation_labels = yTr(:,[split_val+1:n]);
+split_val = round(n / 9);
+train_data = xTr(:,[1:(split_val*8)]);
+train_labels = yTr(:,[1:(split_val*8)]);
+validation_data = xTr(:,[(split_val*8+1):n]);
+validation_labels = yTr(:,[(split_val*8+1):n]);
 
 %% Evaluate all parameter settings
 % YOUR CODE
