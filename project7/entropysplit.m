@@ -20,9 +20,8 @@ end;
 weights=weights./sum(weights); % Weights need to sum to one
 %K=length(unique(yTr));
 %K=max(yTr);
-[~,un,yTr]=unique(yTr);
+[~,un,yTr]=unique(yTr); %un the index of unique element(sorted), yTr is the index st ~(yTr)=original yTr
 K=length(un);
-
 feature=0;
 cut=0;
 Hbest=Inf;

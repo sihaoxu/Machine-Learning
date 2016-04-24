@@ -12,6 +12,15 @@ function preds=evalforest(F,xTe)
 % preds | predictions of labels for xTe
 %
 
-
 %% fill in code here
+
+[d,n]=size(xTe);
+num=length(F);
+ypredict=zeros(num,n);
+
+for i=1:num
+    ypredict(i,:)=evaltree(F{i},xTe);
+end
+
+preds=mode(ypredict,1);
 
